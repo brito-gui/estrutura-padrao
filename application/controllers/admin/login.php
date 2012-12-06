@@ -13,7 +13,7 @@ class Login extends MY_Controller {
     if ($this->form_validation->run() === FALSE)
     {
 			$this->data["title"]="Login";
-			$this->render('login');
+			$this->render('blank');
     }
     else
     {

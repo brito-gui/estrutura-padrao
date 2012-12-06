@@ -2,9 +2,9 @@
 <html>
 <head>
 	<title><?php echo $this->config->item('site_title'); if(isset($title))echo " ".$this->config->item('site_title_delimiter')." ".$title;?></title>	
-		<link type='text/css' href="<?php echo base_url();?>css/main.css" rel='Stylesheet' />
-		<link type='text/css' href="<?php echo base_url();?>twitter-bootstrap/css/bootstrap.min.css" rel='Stylesheet' />    
-		<script src="<?php echo base_url();?>twitter-bootstrap/js/bootstrap.min.js"></script>
+		<link type='text/css' href="<?php echo base_url();?>assets/css/main.css" rel='Stylesheet' />
+		<link type='text/css' href="<?php echo base_url();?>assets/twitter-bootstrap/css/bootstrap.min.css" rel='Stylesheet' />    
+		<script src="<?php echo base_url();?>assets/twitter-bootstrap/js/bootstrap.min.js"></script>
     <script type='text/javascript'>
         <?php if (isset($js)){echo $js;}?>          
 				

@@ -2,11 +2,7 @@
 <html>
 <head>
 <title><?php echo $this->config->item('site_title'); if(isset($title))echo " ".$this->config->item('site_title_delimiter')." ".$title;?></title>
-    <link type='text/css' href="<?php echo base_url();?>css/main.css" rel='Stylesheet' />
-<!--    <script src="<?php echo base_url();?>js/jquery.js" type="text/javascript"></script>
-    <link type="text/css' href='<?php echo base_url();?>css/ui-lightness/jquery-ui.css" rel='Stylesheet' />
-    <script src="<?php echo base_url();?>js/jquery-ui.js" type="text/javascript"></script>-->
-    
+    <link type='text/css' href="<?php echo base_url();?>assets/css/main.css" rel='Stylesheet' />    
     <script type='text/javascript'>
         <?php if (isset($js)){echo $js;}?>          
     </script>
