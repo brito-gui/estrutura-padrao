@@ -2,7 +2,7 @@ Options +FollowSymLinks
 Options -Indexes
 DirectoryIndex index.php
 RewriteEngine on
-RewriteCond $1 !^(index\.php|images|robots\.txt|css|js)
+RewriteCond $1 !^(index\.php|images|robots\.txt|css|js|twitter-bootstrap)
 RewriteRule ^(.*)$ index.php/$1 [L]
 
 AddDefaultCharset UTF-8

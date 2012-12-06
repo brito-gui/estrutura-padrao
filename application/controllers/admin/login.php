@@ -13,7 +13,7 @@ class Login extends MY_Controller {
     if ($this->form_validation->run() === FALSE)
     {
 			$this->data["title"]="Login";
-			$this->render();
+			$this->render('login');
     }
     else
     {
@@ -33,11 +33,5 @@ class Login extends MY_Controller {
 		{
 			return TRUE;
 		}
-	}
-	
-	public function painel()
-	{
-		$this->data['title']='Área restrita';
-		$this->render('admin');
-	}
+	}	
 }

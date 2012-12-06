@@ -2,15 +2,17 @@
 /**
 * Name:  MY_Controller
 * 
-* @Author:  Ben Edmunds
+* @Author:  Ben Edmunds 
 * Created:  7.21.2009 
+* @Author:  Guilherme Brito
+* Created 2012
 * 
 * Description:  Class to extend the CodeIgniter Controller Class.  All controllers should extend this class.
 * 
  */
 
-class MY_Controller extends CI_Controller {
- 
+class MY_Controller extends CI_Controller 
+{ 
     protected $data = Array();
     protected $module_name;
 		protected $controller_name;    
@@ -22,7 +24,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();        
         //set the current controller and action name
 				$this->module_name		 = rtrim($this->router->fetch_directory(),'/');
-        $this->controller_name = $this->router->fetch_directory() . $this->router->fetch_class();
+        $this->controller_name = $this->router->fetch_class();
         $this->action_name     = $this->router->fetch_method();
         
         $this->data['content'] = '';
@@ -30,16 +32,18 @@ class MY_Controller extends CI_Controller {
     }
  
     protected function render($template='main') 
-		{           	
-        $view_path = $this->controller_name . '/' . $this->action_name . '.php'; //set the path off the view
-        if (file_exists(APPPATH . 'views/' . $view_path))
-				{
-            $this->data['content'] .= $this->load->view($view_path, $this->data, true);  //load the view
-        } 		
-        $this->load->view("layouts/$template.tpl.php", $this->data);  //load the template
+		{
+			$module_path = ($this->module_name) ? $this->module_name.'/':'';
+			$view_path = $module_path.$this->controller_name . '/' . $this->action_name . '.php'; //set the path off the view
+			if (file_exists(APPPATH . 'views/' . $view_path))
+			{
+				$this->data['content'] .= $this->load->view($view_path, $this->data, true);  //load the view
+			} 		
+			$this->load->view($module_path."layouts/$template.tpl.php", $this->data);  //load the template
     }
     
-    protected function add_title() {
+    protected function add_title() 
+		{
     	$this->load->model('page_model');
     	
     	//the default page title will be whats set in the controller

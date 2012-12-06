@@ -40,7 +40,7 @@
 
 $route['default_controller'] = 'welcome';
 $route['admin'] = 'admin/login';
-$route['admin/painel'] = 'admin/login/painel';
+$route['admin/painel'] = 'admin/painel';
 //$route['404_override'] = '';
 
 

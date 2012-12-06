@@ -1,1 +1,0 @@
-<h2>Painel de Controles do Admin</h2>
