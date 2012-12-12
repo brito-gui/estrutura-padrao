@@ -10,7 +10,6 @@
 * Description:  Class to extend the CodeIgniter Controller Class.  All controllers should extend this class.
 * 
  */
-
 class MY_Controller extends CI_Controller 
 { 
     protected $data = Array();
@@ -23,7 +22,7 @@ class MY_Controller extends CI_Controller
 		{				
         parent::__construct();        
         //set the current controller and action name
-				$this->module_name		 = rtrim($this->router->fetch_directory(),'/');
+				$this->module_name		 = rtrim($this->router->fetch_directory(),'/')? $this->module_name.'/':'';
         $this->controller_name = $this->router->fetch_class();
         $this->action_name     = $this->router->fetch_method();
         
@@ -33,8 +32,7 @@ class MY_Controller extends CI_Controller
  
     protected function render($template='main') 
 		{
-			$module_path = ($this->module_name) ? $this->module_name.'/':'';
-			$view_path = $module_path.$this->controller_name . '/' . $this->action_name . '.php'; //set the path off the view
+			$view_path = $this->module_name.$this->controller_name . '/' . $this->action_name . '.php'; //set the path off the view
 			if (file_exists(APPPATH . 'views/' . $view_path))
 			{
 				$this->data['content'] .= $this->load->view($view_path, $this->data, true);  //load the view

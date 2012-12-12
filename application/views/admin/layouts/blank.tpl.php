@@ -6,8 +6,7 @@
 		<link type='text/css' href="<?php echo base_url();?>assets/twitter-bootstrap/css/bootstrap.min.css" rel='Stylesheet' />    
 		<script src="<?php echo base_url();?>assets/twitter-bootstrap/js/bootstrap.min.js"></script>
     <script type='text/javascript'>
-        <?php if (isset($js)){echo $js;}?>          
-				
+        <?php if (isset($js)){echo $js;}?>				
     </script>
     <?php 
     	if(isset($head) && is_array($head)) {
