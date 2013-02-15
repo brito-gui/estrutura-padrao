@@ -3,8 +3,8 @@ Class Painel extends MY_Controller
 {
   public function index()
   {
-		$this->data['title']='Área restrita';
-		$this->render();
-	}
+    $this->data['title']='Área restrita';
+    $this->render();
+  }
 }
 ?>

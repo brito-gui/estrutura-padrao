@@ -12,8 +12,8 @@ class Login extends MY_Controller {
 
     if ($this->form_validation->run() === FALSE)
     {
-			$this->data["title"]="Login";
-			$this->render('blank');
+      $this->data["title"]="Login";
+      $this->render('blank');
     }
     else
     {
@@ -22,16 +22,16 @@ class Login extends MY_Controller {
   }
 
   public function validate_login()
-	{
+  {
     /* @var simplelogin Simplelogin*/
     if( ! $this->simplelogin->login($this->db->escape_str($this->input->post('usuario')), $this->input->post('senha')))
     {
-        $this->form_validation->set_message('validate_login', 'Usuário ou senha inválidos');
-        return FALSE;
+      $this->form_validation->set_message('validate_login', 'Usuário ou senha inválidos');
+      return FALSE;
     }
-		else
-		{
-			return TRUE;
-		}
-	}	
+    else
+    {
+      return TRUE;
+    }
+  }	
 }
