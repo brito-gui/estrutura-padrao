@@ -1,12 +1,16 @@
 <?php
 class Login extends MY_Controller {
+  
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->helper(array('form','url'));
+    $this->load->library(array('form_validation','simplelogin'));
+  }
 
   public function index($page='index')
   {
-    $this->session->sess_destroy();    
-    $this->load->helper(array('form','url'));
-    $this->load->library(array('form_validation','simplelogin'));
-
+    $this->session->sess_destroy();
     $this->form_validation->set_rules('usuario', 'Usuário', 'required|alpha_dash');
     $this->form_validation->set_rules('senha', 'Senha', 'required|callback_validate_login');
 
@@ -33,5 +37,11 @@ class Login extends MY_Controller {
     {
       return TRUE;
     }
-  }	
+  }
+  
+  public function logout()
+  {
+    $this->simplelogin->logout();
+    redirect($this->config->item('base_url').'admin');
+  }
 }

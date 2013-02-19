@@ -352,7 +352,7 @@ if ( ! function_exists('log_message'))
 
 		if (config_item('log_threshold') == 0)
 		{
-			return;
+      return;
 		}
 
 		$_log =& load_class('Log');

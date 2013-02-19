@@ -15,7 +15,7 @@
 |
 */
 $config['base_url']	= 'http://127.0.0.1/estrutura-padrao/';
-$config['site_title']	= '[CI-PROJECT]';
+$config['site_title']	= 'CI-PROJECT';
 
 /*
 |--------------------------------------------------------------------------

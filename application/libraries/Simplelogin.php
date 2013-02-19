@@ -195,7 +195,7 @@ class Simplelogin
 	 */
 	function logout() {
 		//Put here for PHP 4 users
-		$this->CI =& get_instance();		
+		$this->CI =& get_instance();
 
 		//Destroy session
 		$this->CI->session->sess_destroy();

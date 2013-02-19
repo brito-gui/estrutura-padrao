@@ -6,8 +6,8 @@
 	<?php $menu_type = (isset($menu_type)) ? $menu_type : "main" ?>
 	<?php $module = (isset($module)) ? $module : "" ?>
   <?php $numOfItems = count($this->Menu_model->get_menu($menu_type,$module));?>	
-	  <?php foreach ($this->Menu_model->get_menu($menu_type,$module) as $key => $item):?>
- 	 <?php if ($this->session->userdata('group_id') && ($item->group_id) == $this->session->userdata('group_id') || $item->group_id == '0'):?>
+  <?php foreach ($this->Menu_model->get_menu($menu_type,$module) as $key => $item):?>
+    <?php if ($this->session->userdata('group_id') && ($item->group_id) == $this->session->userdata('group_id') || $item->group_id == '0'):?>
         <?php if ($item->require_login && $this->session->userdata('logged_in') || !$item->require_login):?>
 	        	<?php if($key != $numOfItems && $key != 0):?>	           		
 	            <?php endif;?>					
@@ -43,4 +43,5 @@
 	     <?php endif;?>
   	 <?php endif;?>  	   
   <?php endforeach;?>
+          <li class="link"><a href="<?php echo $this->config->item("base_url")."admin/logout" ?>">Logout</a></li>
 </ul>
