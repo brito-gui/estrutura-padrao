@@ -17,14 +17,25 @@ class MY_Controller extends CI_Controller
     protected $controller_name;    
     protected $action_name;
     protected $page_title;
+    public $CI;
    
     public function __construct() 
-    {				
-      parent::__construct();        
+    {      
+      parent::__construct();       
+      $this->CI =& get_instance();
+      $this->CI->load->library("session");
+      $this->CI->load->model("menu_model");
       //set the current controller and action name
       $this->module_name     = (trim($this->router->fetch_directory()!="")) ? rtrim($this->router->fetch_directory(),'/'):'';
       $this->controller_name = $this->router->fetch_class();
-      $this->action_name     = $this->router->fetch_method();
+      $this->action_name     = $this->router->fetch_method();      
+      //verify if the loaded page needs logged_in user
+      if(($this->CI->menu_model->is_login_required($this->module_name,$this->controller_name)) && (!$this->session->userdata("logged_in")))
+      {
+        //if the user is logged of, take him out of this area
+        redirect($this->config->item('base_url').'admin/logout');
+        return false;
+      }
       $this->data['content'] = '';
       $this->data['css']     = '';
     }
@@ -34,7 +45,7 @@ class MY_Controller extends CI_Controller
       $view_path = $this->module_name. '/' . $this->controller_name . '/' . $this->action_name . '.php'; //set the path off the view
       if (file_exists(APPPATH . 'views/' . $view_path))
       {
-	$this->data['content'] .= $this->load->view($view_path, $this->data, true);  //load the view
+        $this->data['content'] .= $this->load->view($view_path, $this->data, true);  //load the view
       } 		
       $this->load->view($this->module_name. '/' . "layouts/$template.tpl.php", $this->data);  //load the template
     }
@@ -48,5 +59,5 @@ class MY_Controller extends CI_Controller
       if ($page_title) {
 	      $this->data['title'] = $page_title;
       }
-    }
+    }    
 }

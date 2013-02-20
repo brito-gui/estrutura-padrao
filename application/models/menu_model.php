@@ -4,7 +4,7 @@
  */
 class Menu_model extends CI_Model
 {
-	private $tableName='pages';
+	private $tableName='tbl_pages';
 	public function __construct()
 	{
 		parent::__construct();
@@ -16,6 +16,13 @@ class Menu_model extends CI_Model
 		$query=$this->db->order_by('order','asc');
 		$query=$this->db->get_where($this->tableName,array('menu'=>$type,'module'=>$module));
 		return $query->result();
+	}
+	public function is_login_required($module,$controller)
+	{
+		$query=$this->db->order_by('order','asc');
+		$query=$this->db->get_where($this->tableName,array('controller'=>$controller,'module'=>$module));
+		$result=$query->result();
+    return (isset($result[0])) ? $result[0]->require_login : 0;
 	}
 }
 ?>

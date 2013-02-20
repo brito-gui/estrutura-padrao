@@ -42,6 +42,6 @@ class Login extends MY_Controller {
   public function logout()
   {
     $this->simplelogin->logout();
-    redirect($this->config->item('base_url').'admin');
+    $this->render();
   }
 }
